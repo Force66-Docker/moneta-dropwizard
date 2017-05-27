@@ -13,10 +13,11 @@
 #		Sample usage:
 #
 #		docker image dropwizard .
-#       docker run -d -p 8080:8080 -p 8081:8081 \ 
-#			-v /c/Users/moneta/dropwizard/config:/config \ 
-#			-v /c/Users/moneta/dropwizard/logs:/logs \ 
-#			-v /c/Users/moneta/dropwizard/jarlib:/jarlib \ 
+#       docker run -d -p 8080:8080 -p 8081:8081 \
+#			-v /c/Users/moneta/dropwizard/config:/config \
+#			-v /c/Users/moneta/dropwizard/logs:/logs \
+#			-v /c/Users/moneta/dropwizard/jarlib:/jarlib \
+#     -e JAVA_OPTS="-Xmx256m"
 #			dropwizard
 #
 
@@ -39,4 +40,4 @@ ENV CLASSPATH /config:/jarlib/*.jar:moneta-dropwizard.jar
 
 EXPOSE 8080 8081
 
-ENTRYPOINT ["java", "-classpath", "$CLASSPATH", "-jar", "moneta-dropwizard.jar", "server", "/config/moneta-dropwizard.yaml"]
+ENTRYPOINT ["java", "-classpath", "$CLASSPATH", "-jar", "moneta-dropwizard.jar", "server", "$JAVA_OPTS", "/config/moneta-dropwizard.yaml"]
