@@ -40,4 +40,4 @@ ENV CLASSPATH /config:/jarlib/*.jar:moneta-dropwizard.jar
 
 EXPOSE 8080 8081
 
-ENTRYPOINT exec java -classpath $CLASSPATH -server $JAVA_OPTS -jar moneta-dropwizard.jar /config/moneta-dropwizard.yaml
+ENTRYPOINT exec java -classpath $CLASSPATH -server $JAVA_OPTS -jar moneta-dropwizard.jar server /config/moneta-dropwizard.yaml
